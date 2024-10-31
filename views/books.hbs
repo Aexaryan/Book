@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{title}}</title>
+</head>
+<body>
+  <h1>{{title}}</h1>
+
+  <ul>
+    {{#each books}}
+      <li>{{this.title}} by {{this.author}} ({{this.pages}} pages)
+   
+        <a href="/books/edit/{{encodeURIComponent this.title}}">Edit</a>
+
+        <form action="/books/delete" method="POST" style="display:inline;">
+          <input type="hidden" name="title" value="{{this.title}}">
+          <button type="submit">Delete</button>
+        </form>
+      </li>
+    {{/each}}
+  </ul>
+
+  <a href="/books/add">Add Another Book</a>
+  <br><br>
+
+  <a href="/books/paginate?page=1">View Paginated Books</a>
+
+</body>
+</html>

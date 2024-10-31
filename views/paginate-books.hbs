@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paginated Books</title>
+
+
+</head>
+<body>
+
+  <div class="container">
+    <h1>Books List (Paginated)</h1>
+
+    <div class="book-list">
+      {{#each books}}
+      <div class="book-item">
+        <div class="book-details">
+          <strong>{{this.title}}</strong> by {{this.author}} ({{this.pages}} pages)
+        </div>
+
+        <div class="actions">
+          <a href="/books/edit/{{encodeURIComponent this.title}}" class="btn">Edit</a>
+          
+          <form action="/books/delete" method="POST" style="display:inline;">
+            <input type="hidden" name="title" value="{{this.title}}">
+            <button type="submit" class="btn">Delete</button>
+          </form>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+
+    <nav>
+      <ul class="pagination">
+        {{#if prevPage}}
+        <li><a href="/books/paginate?page={{prevPage}}">Previous</a></li>
+        {{/if}}
+
+        {{#each pages}}
+        <li class="{{#if active}}active{{/if}}">
+          <a href="/books/paginate?page={{this.page}}">{{this.page}}</a>
+        </li>
+        {{/each}}
+
+        {{#if nextPage}}
+        <li><a href="/books/paginate?page={{nextPage}}">Next</a></li>
+        {{/if}}
+      </ul>
+    </nav>
+  </div>
+
+</body>
+  <style>
+
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .book-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      background-color: #fff;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+    }
+
+
+    .btn {
+      padding: 5px 10px;
+      border: 1px solid gray;
+      background-color: gray;
+      color: white;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background-color: darkgray;
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      padding: 0;
+    }
+
+    .pagination li {
+      margin: 0 5px;
+    }
+
+    .pagination a {
+      padding: 5px 10px;
+      text-decoration: none;
+      border: 1px solid #ddd;
+      color: black;
+    }
+
+    .pagination .active a {
+      background-color: gray;
+      color: white;
+    }
+  </style>
+</html>

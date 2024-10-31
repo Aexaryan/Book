@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{title}}</title>
+</head>
+<body>
+  <h1>{{title}}</h1>
+  <form action="/books" method="POST">
+    <label for="title">Title:</label><br>
+    <input type="text" id="title" name="title" required><br><br>
+
+    <label for="author">Author:</label><br>
+    <input type="text" id="author" name="author" required><br><br>
+
+    <label for="pages">Pages:</label><br>
+    <input type="number" id="pages" name="pages" required><br><br>
+
+    <label for="publishedDate">Published Date:</label><br>
+    <input type="date" id="publishedDate" name="publishedDate"><br><br>
+
+    <label for="genres">Genres (comma separated):</label><br>
+    <input type="text" id="genres" name="genres"><br><br>
+
+    <button type="submit">Add Book</button>
+  </form>
+
+  <a href="/books">View All Books</a>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{title}}</title>
+</head>
+<body>
+  <h1>{{title}}</h1>
+ <form action="/books/update" method="POST">
+  <input type="hidden" name="oldTitle" value="{{book.title}}">
+  
+  <label for="title">Title:</label><br>
+  <input type="text" id="title" name="title" value="{{book.title}}" required><br><br>
+
+  <label for="author">Author:</label><br>
+  <input type="text" id="author" name="author" value="{{book.author}}" required><br><br>
+
+  <label for="pages">Pages:</label><br>
+  <input type="number" id="pages" name="pages" value="{{book.pages}}" required><br><br>
+
+  <label for="publishedDate">Published Date:</label><br>
+  <input type="date" id="publishedDate" name="publishedDate" value="{{book.publishedDate}}"><br><br>
+
+  <label for="genres">Genres (comma separated):</label><br>
+  <input type="text" id="genres" name="genres" value="{{book.genres}}"><br><br>
+
+  <button type="submit">Update Book</button>
+</form>
+
+<a href="/books">Back to Book List</a>
